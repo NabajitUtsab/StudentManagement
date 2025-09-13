@@ -1,8 +1,26 @@
 import java.util.Scanner;
 
 public class Main {
+   public static Scanner scanner=new Scanner(System.in);
+
+
+    static String Username;
+    static String Userpass;
+
+    public static void loginMethod(){
+        System.out.println("Enter your name");
+        Username=scanner.nextLine();
+
+        System.out.println("Enter your pass");
+        Userpass=scanner.nextLine();
+
+        new Login(Username,Userpass);
+    }
+
+
     public static void main(String[] args) {
-        Scanner scanner=new Scanner(System.in);
+
+
 
         System.out.println("Are you students? (Y/N)");
         String answer=scanner.nextLine();
@@ -14,6 +32,7 @@ public class Main {
             System.out.println("Type S for SignUp and L for Login");
 
             String answer2=scanner.nextLine();
+
             if(answer2.equalsIgnoreCase("S")){
                 System.out.println("Enter your name");
                 String name=scanner.nextLine();
@@ -32,20 +51,28 @@ public class Main {
 
                 new StudentSignup(name,pass,age,class1,roll);
                 System.out.println("SignUp Successful");
+                System.out.println("Want to Login?Y/N");
 
-                System.exit(0);
+                String answer3=scanner.nextLine();
+                if(answer3.equalsIgnoreCase("Y")){
+                    loginMethod();
+                }
+                else{
+                    System.exit(0);
+                }
+
+
 
 
             }
             else{
-                System.out.println("Enter your name");
-                String name=scanner.nextLine();
-
-                System.out.println("Enter your pass");
-                String pass=scanner.nextLine();
+               loginMethod();
             }
 
 
         }
+
+
+        //else
     }
 }
